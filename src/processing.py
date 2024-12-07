@@ -5,10 +5,9 @@ def filter_by_state(list_of_dictionaries: list, state: str = "EXECUTED") -> list
     соответствующий указанному значению
     """
     new_list_of_dictionaries = []
-    for i in list_of_dictionaries:
-        for key, value in i.items():
-            if value == state:
-                new_list_of_dictionaries.append(i)
+    for dictionary in list_of_dictionaries:
+        if dictionary["state"] == state:
+            new_list_of_dictionaries.append(dictionary)
     return new_list_of_dictionaries
 
 

@@ -19,4 +19,10 @@ def get_date(user_date: str) -> str:
     """
     Функция, которая меняет формат даты
     """
-    return f"{user_date[8:10]}.{user_date[5:7]}.{user_date[0:4]}"
+    if user_date == "":
+        raise AssertionError ("Не введена дата")
+
+    if "-" in user_date[0:10]:
+        return f"{user_date[8:10]}.{user_date[5:7]}.{user_date[0:4]}"
+    else:
+        return f"{user_date[6:8]}.{user_date[4:6]}.{user_date[0:4]}"

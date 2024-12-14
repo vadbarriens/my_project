@@ -1,6 +1,6 @@
 import pytest
 
-from src.widget import mask_account_card
+from src.widget import mask_account_card, get_date
 
 def test_mask_account_card_Visa():
     assert mask_account_card("Visa Platinum 7000792289606361") == "Visa Platinum 7000 79** **** 6361"
@@ -23,8 +23,24 @@ def test_mask_account_card_edge_case(account_card_number, expected):
     assert mask_account_card(account_card_number) == expected
 
 
-def test_mask_account_card():
+def test_mask_account_card_no_numbers():
     with pytest.raises(AssertionError):
         mask_account_card("")
 
 
+def test_get_date():
+    assert get_date("2024-03-11T02:26:18.671407") == "11.03.2024"
+
+
+@pytest.mark.parametrize("user_date, expected",
+                         [("2005-08-09T18:31:42+03", "09.08.2005"),
+                          ("2005-08-09T18:31:42+03:30", "09.08.2005"),
+                          ("20050809T183142-0330", "09.08.2005"),
+                          ("20050809T183142", "09.08.2005")])
+def test_get_date_edge_case(user_date, expected):
+    assert get_date(user_date) == expected
+
+
+def test_get_date_no_date():
+    with pytest.raises(AssertionError):
+        get_date("")

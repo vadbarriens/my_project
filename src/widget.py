@@ -9,7 +9,7 @@ def mask_account_card(user_input: str) -> str:
     if user_input[-20:].isnumeric():
         return user_input[0:-20] + get_mask_account(user_input)
     else:
-        return user_input[0:-16] + get_mask_card_number(user_input)
+        return get_mask_card_number(user_input)
 
 
 def get_date(user_date: str) -> str:

@@ -13,4 +13,6 @@ def test_get_mask_card_number_edge_case(card_number, expected):
     assert get_mask_card_number(card_number) == expected
 
 
-
+def test_get_mask_card_no_number():
+    with pytest.raises(AssertionError):
+        get_mask_card_number("")

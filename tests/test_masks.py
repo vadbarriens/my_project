@@ -1,9 +1,14 @@
 import pytest
 
+@pytest.fixture
+
+def my_number():
+    return '7000792289606361'
+
 from src.masks import get_mask_card_number, get_mask_account
 
-def test_get_mask_card_number():
-    assert get_mask_card_number('7000792289606361') == '7000 79** **** 6361'
+def test_get_mask_card_number(my_number):
+    assert get_mask_card_number(my_number) == '7000 79** **** 6361'
 
 
 @pytest.mark.parametrize("card_number, expected", [("3758493047586756473", "3758493 04** **** 6473"),

@@ -1,9 +1,14 @@
 import pytest
 
+@pytest.fixture
+
+def my_number_card():
+    return "Visa Platinum 7000792289606361"
+
 from src.widget import mask_account_card, get_date
 
-def test_mask_account_card_Visa():
-    assert mask_account_card("Visa Platinum 7000792289606361") == "Visa Platinum 7000 79** **** 6361"
+def test_mask_account_card_Visa(my_number_card):
+    assert mask_account_card(my_number_card) == "Visa Platinum 7000 79** **** 6361"
 
 
 def test_mask_account_card_Master_card():

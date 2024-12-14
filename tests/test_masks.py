@@ -1,6 +1,6 @@
 import pytest
 
-from src.masks import get_mask_card_number
+from src.masks import get_mask_card_number, get_mask_account
 
 def test_get_mask_card_number():
     assert get_mask_card_number('7000792289606361') == '7000 79** **** 6361'
@@ -16,3 +16,18 @@ def test_get_mask_card_number_edge_case(card_number, expected):
 def test_get_mask_card_no_number():
     with pytest.raises(AssertionError):
         get_mask_card_number("")
+
+
+def test_get_mask_account():
+    assert get_mask_account("73654108430135874305") == "**4305"
+
+
+@pytest.mark.parametrize("account_number, expected", [("123423094325094055678909876543", "**6543"),
+                                                   ("123 346 899 0 797 6374857", "**4857"),
+                                                   ("649.30.485.7.4635.2176453", "**6453")])
+def test_get_mask_account_edge_case(account_number, expected):
+    assert get_mask_account(account_number) == expected
+
+
+def test_get_mask_account_short_number():
+    assert get_mask_account("135872879") == "**2879"

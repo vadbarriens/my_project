@@ -100,3 +100,15 @@ def transactions() -> list:
             "to": "Счет 14211924144426031657"
         }
     ]
+
+@pytest.fixture
+def currency() -> str:
+    return "USD"
+
+@pytest.fixture
+def currency_1() -> str:
+    return "EUR"
+
+@pytest.fixture
+def transactions_1() -> list:
+    return []

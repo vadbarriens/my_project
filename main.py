@@ -31,8 +31,7 @@ list_operations = [
 ]
 print(sort_by_date(list_operations))
 
-transactions = (
-    [
+transactions = [
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -109,7 +108,6 @@ transactions = (
             "to": "Счет 14211924144426031657"
         }
     ]
-)
 
 usd_transactions = filter_by_currency(transactions, "USD")
 for _ in range(2):

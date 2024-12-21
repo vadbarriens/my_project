@@ -112,3 +112,19 @@ def currency_1() -> str:
 @pytest.fixture
 def transactions_1() -> list:
     return []
+
+@pytest.fixture
+def start() -> int:
+    return 598
+
+@pytest.fixture
+def stop() -> int:
+    return 601
+
+@pytest.fixture
+def start_1() -> int:
+    return 9999999999999997
+
+@pytest.fixture
+def stop_1() -> int:
+    return 9999999999999999

@@ -46,7 +46,7 @@ def test_transaction_descriptions(transactions: list) -> str:
 "Перевод организации"
 
 
-def test_transaction_descriptions(transactions_1: list) -> str:
+def test_transaction_descriptions_not_list(transactions_1: list) -> str:
     generator = transaction_descriptions(transactions_1)
     assert not list(generator)
 
@@ -68,3 +68,16 @@ def test_card_number_generator_stop(start_1: int, stop_1: int) -> str:
 
 "9999 9999 9999 9998"
 "9999 9999 9999 9999"
+
+
+@pytest.mark.parametrize(
+    "start, stop, expected",
+    [
+        (1, 2, ["0000 0000 0000 0001", "0000 0000 0000 0002"]),
+        (5, 6, ["0000 0000 0000 0005", "0000 0000 0000 0006"]),
+        (9999999999999997, 9999999999999999, ["9999 9999 9999 9997", "9999 9999 9999 9998", "9999 9999 9999 9999"]),
+    ],
+)
+def test_card_number_generator_param(start, stop, expected):
+    generator = card_number_generator(start, stop)
+    assert list(generator) == expected

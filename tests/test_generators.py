@@ -1,9 +1,9 @@
 import pytest
 
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
+from typing import Any
 
-
-def test_filter_by_currency(transactions: list, currency: str) -> iter:
+def test_filter_by_currency(transactions: list, currency: str) -> Any:
     generator = filter_by_currency(transactions, currency)
     assert next(generator) == {
         "id": 939719570,
@@ -25,17 +25,17 @@ def test_filter_by_currency(transactions: list, currency: str) -> iter:
     }
 
 
-def test_filter_by_currency_no_currency(transactions: list, currency_1: str) -> iter:
+def test_filter_by_currency_no_currency(transactions: list, currency_1: str) -> Any:
     generator = filter_by_currency(transactions, currency_1)
     assert not list(generator)
 
 
-def test_filter_by_currency_no_list(transactions_1: list, currency: str) -> iter:
+def test_filter_by_currency_no_list(transactions_1: list, currency: str) -> Any:
     generator = filter_by_currency(transactions_1, currency)
     assert not list(generator)
 
 
-def test_transaction_descriptions(transactions: list) -> str:
+def test_transaction_descriptions(transactions: list) -> Any:
     generator = transaction_descriptions(transactions)
     assert next(generator) == "Перевод организации"
 
@@ -46,12 +46,12 @@ def test_transaction_descriptions(transactions: list) -> str:
 "Перевод организации"
 
 
-def test_transaction_descriptions_not_list(transactions_1: list) -> str:
+def test_transaction_descriptions_not_list(transactions_1: list) -> Any:
     generator = transaction_descriptions(transactions_1)
     assert not list(generator)
 
 
-def test_card_number_generator(start: int, stop: int) -> str:
+def test_card_number_generator(start: int, stop: int) -> Any:
     generator = card_number_generator(start, stop)
     assert next(generator) == "0000 0000 0000 0598"
 
@@ -61,7 +61,7 @@ def test_card_number_generator(start: int, stop: int) -> str:
 "0000 0000 0000 0601"
 
 
-def test_card_number_generator_stop(start_1: int, stop_1: int) -> str:
+def test_card_number_generator_stop(start_1: int, stop_1: int) -> Any:
     generator = card_number_generator(start_1, stop_1)
     assert next(generator) == "9999 9999 9999 9997"
 
@@ -78,6 +78,6 @@ def test_card_number_generator_stop(start_1: int, stop_1: int) -> str:
         (9999999999999997, 9999999999999999, ["9999 9999 9999 9997", "9999 9999 9999 9998", "9999 9999 9999 9999"]),
     ],
 )
-def test_card_number_generator_param(start, stop, expected):
+def test_card_number_generator_param(start: int, stop: int, expected: str) -> Any:
     generator = card_number_generator(start, stop)
     assert list(generator) == expected

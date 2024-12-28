@@ -25,5 +25,5 @@ def test_log_console() -> Any:
 def test_log_exception() -> Any:
     @log(filename=None)
     def my_function() -> Any:
-        my_function('3', 2)
+        my_function("3", 2)
         assert my_function() == TypeError

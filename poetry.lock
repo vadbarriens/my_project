@@ -259,6 +259,16 @@ files = [
 ]
 
 [[package]]
+name = "optional"
+version = "0.0.1"
+description = "Optional Class for Python2/3"
+optional = false
+python-versions = "*"
+files = [
+    {file = "optional-0.0.1.tar.gz", hash = "sha256:2d8532e9f688b936be1ae13f81e57347631017831fc49f358e8f3de975d353eb"},
+]
+
+[[package]]
 name = "packaging"
 version = "24.2"
 description = "Core utilities for Python packages"
@@ -385,4 +395,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "b88c048c05b379e08a0ce6a33e214561b8e5924da3b95488aa03dcf1530a12eb"
+content-hash = "bc5b2c029f69dc3924fad67cbeff81b15ab7e38df2e572d8e35e53426f8eb476"

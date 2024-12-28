@@ -32,7 +32,7 @@ def log(filename: Optional[str]) -> Callable:
     return my_decorator
 
 
-@log(filename=None)
+@log(filename="mylog.txt")
 def my_function(x: int, y: int) -> int:
     """суммирует два значения"""
     return x + y

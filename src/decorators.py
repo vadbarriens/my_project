@@ -1,7 +1,6 @@
 import os
 from functools import wraps
 from typing import Callable, Optional, Any
-
 from config import path
 
 

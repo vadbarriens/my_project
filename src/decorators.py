@@ -24,7 +24,7 @@ def log(filename: Optional[str]) -> Callable:
                         file.write(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}\n")
                 else:
                     print(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}\n")
-                raise e
+
 
         return wrapper
 

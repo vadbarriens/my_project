@@ -16,25 +16,27 @@ def log(filename: Optional[str]) -> Callable:
                     with open(os.path.join(path, "mylog.txt"), "a", encoding="utf-8") as file:
                         file.write(f"{func.__name__} ok\n")
                 else:
-                    print(f"{func.__name__} ok\n")
+                    print(f"{func.__name__} ok")
                 return result
-            except Exception as e:
+            except ZeroDivisionError as e:
                 if filename:
                     with open(os.path.join(path, "mylog.txt"), "a", encoding="utf-8") as file:
                         file.write(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}\n")
                 else:
-                    print(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}\n")
-
+                    print(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}")
+            except TypeError as e:
+                if filename:
+                    with open(os.path.join(path, "mylog.txt"), "a", encoding="utf-8") as file:
+                        file.write(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}\n")
+                else:
+                    print(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}")
+            except ValueError as e:
+                if filename:
+                    with open(os.path.join(path, "mylog.txt"), "a", encoding="utf-8") as file:
+                        file.write(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}\n")
+                else:
+                    print(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}")
 
         return wrapper
 
     return my_decorator
-
-
-@log(filename="mylog.txt")
-def my_function(x: int, y: int) -> int:
-    """суммирует два значения"""
-    return x + y
-
-
-my_function(3, 2)

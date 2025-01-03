@@ -1,4 +1,7 @@
-def filter_by_currency(transactions: list, currency: str) -> iter:
+from typing import Any
+
+
+def filter_by_currency(transactions: list, currency: str) -> Any:
     """Функция, которая принимает на вход список словарей, представляющих транзакции и возвращает итератор,
     который поочередно выдает транзакции, где валюта операции соответствует заданной"""
 
@@ -7,7 +10,7 @@ def filter_by_currency(transactions: list, currency: str) -> iter:
     return (x for x in transactions if x["operationAmount"]["currency"]["code"] == currency)
 
 
-def transaction_descriptions(transactions: list) -> str:
+def transaction_descriptions(transactions: list) -> Any:
     """Генератор, который принимает список словарей с транзакциями и
     возвращает описание каждой операции по очереди."""
 
@@ -16,7 +19,7 @@ def transaction_descriptions(transactions: list) -> str:
         yield x
 
 
-def card_number_generator(start: int, stop: int) -> str:
+def card_number_generator(start: int, stop: int) -> Any:
     """Генератор, который выдает номера банковских карт в заданном диапазоне"""
 
     for x in range(start, stop + 1):

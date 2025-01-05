@@ -9,6 +9,7 @@ apikey = os.getenv("API_KEY")
 
 
 def convert_transaction(transaction: dict) -> Any:
+    """Конвертер валют"""
     url = "https://api.apilayer.com/currency_data/convert"
     headers = {"apikey": apikey}
     payload = {

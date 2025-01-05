@@ -22,6 +22,7 @@ def fin_transaction(path: str) -> list:
 
 
 def transaction_amount(trans: dict) -> Any:
+    """Выводит сумму по транзакции в рублях, если валюта иная, то конвертирует её"""
     if trans["operationAmount"]["currency"]["code"] == "RUB":
         amount = trans["operationAmount"]["amount"]
     else:

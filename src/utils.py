@@ -1,4 +1,5 @@
 import json
+from typing import Any
 
 from src.external_api import convert_transaction
 
@@ -6,7 +7,7 @@ from src.external_api import convert_transaction
 def fin_transaction(path: str) -> list:
     """Возвращает список словарей о финансовых транзакциях"""
     try:
-        with open(path, 'r', encoding='utf-8') as transaction_file:
+        with open(path, "r", encoding="utf-8") as transaction_file:
             try:
                 transaction_list = json.load(transaction_file)
             except json.JSONDecodeError:
@@ -20,7 +21,7 @@ def fin_transaction(path: str) -> list:
     return transaction_list
 
 
-def transaction_amount(trans):
+def transaction_amount(trans: dict) -> Any:
     if trans["operationAmount"]["currency"]["code"] == "RUB":
         amount = trans["operationAmount"]["amount"]
     else:

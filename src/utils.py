@@ -1,5 +1,8 @@
 import json
 
+from src.external_api import convert_transaction
+
+
 def fin_transaction(path: str) -> list:
     """Возвращает список словарей о финансовых транзакциях"""
     try:
@@ -17,7 +20,9 @@ def fin_transaction(path: str) -> list:
     return transaction_list
 
 
-
-
-if __name__ == '__main__':
-    print(fin_transaction("../data/operations.json"))
+def transaction_amount(trans):
+    if trans["operationAmount"]["currency"]["code"] == "RUB":
+        amount = trans["operationAmount"]["amount"]
+    else:
+        amount = convert_transaction(trans)
+    return amount

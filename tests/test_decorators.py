@@ -1,6 +1,8 @@
 import os
-import pytest
 from typing import Any
+
+import pytest
+
 from config import path
 from src.decorators import log
 

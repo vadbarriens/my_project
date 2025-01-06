@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 
@@ -105,3 +107,47 @@ def start_1() -> int:
 @pytest.fixture
 def stop_1() -> int:
     return 9999999999999999
+
+
+@pytest.fixture
+def path() -> str:
+    PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations.json")
+    return PATH_TO_FILE
+
+
+@pytest.fixture
+def path_empty_list() -> str:
+    PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations1.json")
+    return PATH_TO_FILE
+
+
+@pytest.fixture
+def path_mistake_json() -> str:
+    PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations2.json")
+    return PATH_TO_FILE
+
+
+@pytest.fixture
+def transaction() -> dict:
+    return {
+        "id": 441945886,
+        "state": "EXECUTED",
+        "date": "2019-08-26T10:50:58.294041",
+        "operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "RUB"}},
+        "description": "Перевод организации",
+        "from": "Maestro 1596837868705199",
+        "to": "Счет 64686473678894779589",
+    }
+
+
+@pytest.fixture
+def transaction1() -> dict:
+    return {
+        "id": 441945886,
+        "state": "EXECUTED",
+        "date": "2019-08-26T10:50:58.294041",
+        "operationAmount": {"amount": "31957.58", "currency": {"name": "дол.", "code": "USD"}},
+        "description": "Перевод организации",
+        "from": "Maestro 1596837868705199",
+        "to": "Счет 64686473678894779589",
+    }

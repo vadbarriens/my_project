@@ -1,5 +1,20 @@
 import json
 from typing import Any
+import logging
+
+
+logger = logging.getLogger('utils')
+file_handler = logging.FileHandler('../logs/utils_logs.log', 'w', encoding='utf-8')
+file_formatter = logging.Formatter('%(asctime)s %(name)s %(levelname)s %(message)s')
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
+
+logger.debug('сообщение уровня debug')
+logger.info('сообщение уровня info')
+logger.warning('сообщение уровня warning')
+logger.error('сообщение уровня error')
+logger.critical('сообщение уровня critical')
 
 from src.external_api import convert_transaction
 

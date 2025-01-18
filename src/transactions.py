@@ -4,9 +4,9 @@ import pandas as pd
 
 def read_transactions_csv(path: str) -> list:
     """Читает файл CSV и выдает список словарей транзакций"""
-    with open(path, "r", encoding="utf-8") as file:
-        list_csv_transaction = csv.DictReader(file)
-        return list(list_csv_transaction)
+    with open(path, encoding='utf8') as f:
+        reader = csv.DictReader(f, delimiter=';')
+        return list(reader)
 
 
 def read_transactions_excel(path: str) -> list:
@@ -14,3 +14,7 @@ def read_transactions_excel(path: str) -> list:
     df = pd.read_excel(path)
     list_excel_transact = df.to_dict(orient='records')
     return list(list_excel_transact)
+
+
+if __name__ == '__main__':
+    print(read_transactions_excel('../data/transactions_1.xlsx'))

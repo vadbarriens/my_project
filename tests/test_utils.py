@@ -29,7 +29,7 @@ def test_fin_transaction_mistake_json(path_mistake_json: Any) -> None:
 
 
 def test_transaction_amount(transaction: Any) -> Any:
-    assert transaction_amount(transaction) == "31957.58"
+    assert transaction_amount(transaction) == 31957.58
 
 
 @patch("src.utils.convert_transaction")

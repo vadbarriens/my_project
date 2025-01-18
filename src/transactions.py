@@ -14,7 +14,3 @@ def read_transactions_excel(path: str) -> list:
     df = pd.read_excel(path)
     list_excel_transact = df.to_dict(orient='records')
     return list(list_excel_transact)
-
-
-if __name__ == '__main__':
-    print(read_transactions_excel('../data/transactions_1.xlsx'))

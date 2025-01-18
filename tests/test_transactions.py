@@ -13,7 +13,7 @@ def test_read_transactions_csv(mock_csv: Any) -> None:
          'currency_name': 'Peso', 'currency_code': 'COP', 'from': 'Discover 3172601889670065',
          'to': 'Discover 0720428384694643', 'description': 'Перевод с карты на карту'}]
     mock_csv.return_value = expected
-    assert read_transactions_csv('../data/transactions.csv') == expected
+    assert read_transactions_csv(r'C:\Users\burin87\PycharmProjects\my_project1\data\transactions.csv') == expected
     mock_csv.assert_called_once()
 
 

@@ -1,7 +1,8 @@
 from typing import Any
 from unittest.mock import patch
 
-from src.transactions import read_transactions_csv, read_transactions_excel
+from src.transactions import read_transactions_csv, read_transactions_excel, get_filter_transactions, \
+    count_transactions_by_categories
 
 
 @patch("csv.DictReader")
@@ -64,3 +65,24 @@ def test_read_transactions_excel(mock_excel: Any) -> None:
     mock_excel.return_value.to_dict.return_value = expected
     assert read_transactions_excel("../data/transactions_1.xlsx") == expected
     mock_excel.assert_called_once()
+
+
+def test_get_filter_transactions():
+    transactions = [
+        {"description": "Открытие вклада", "amount": 5000, "status": "EXECUTED", "date": "2023-12-01"},
+        {"description": "Перевод с карты на карту", "amount": 1000, "status": "CANCELED", "date": "2023-11-15"},
+        {"description": "Оплата услуг", "amount": 2000, "status": "PENDING", "date": "2023-12-05"},
+        {"description": "Покупка билетов", "amount": 1500, "status": "CANCELED", "date": "2023-10-20"},
+    ]
+    keyword = "карта"
+    result = get_filter_transactions(transactions, keyword)
+    assert len(result) == 0, f"Должно быть 1 совпадение, а найдено {len(result)}"
+
+def test_count_transactions_by_categories():
+    transactions = [
+        {"description": "Открытие вклада", "amount": 5000, "status": "EXECUTED", "date": "2023-12-01"},
+    ]
+    categories = ["вклада"]
+    result = count_transactions_by_categories(transactions, categories)
+    print(f"Результат подсчета: {result}")
+    assert result["вклада"] == 1, f"Ожидалось 1 транзакция в категории 'вклад', но найдено {result['вклад']}"

@@ -1,13 +1,8 @@
-import json
-import re
-from collections import Counter
 from src.utils import fin_transaction_json
 from src.transactions import (
     read_transactions_csv, read_transactions_excel,
     get_filter_transactions, count_transactions_by_categories
 )
-import pandas as pd
-from typing import Any
 
 
 def main():

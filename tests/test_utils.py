@@ -21,11 +21,11 @@ def test_fin_transaction(path: Any) -> None:
 
 
 def test_fin_transaction_empty_list(path_empty_list: Any) -> None:
-    assert fin_transaction(path_empty_list) == []
+    assert fin_transaction_json(path_empty_list) == []
 
 
 def test_fin_transaction_mistake_json(path_mistake_json: Any) -> None:
-    assert fin_transaction(path_mistake_json) == []
+    assert fin_transaction_json(path_mistake_json) == []
 
 
 def test_transaction_amount(transaction: Any) -> Any:

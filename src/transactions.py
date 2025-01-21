@@ -1,6 +1,8 @@
 import csv
-import pandas as pd
 import re
+
+import pandas as pd
+
 
 def read_transactions_csv(path: str) -> list:
     """Читает файл CSV и выдает список словарей транзакций"""

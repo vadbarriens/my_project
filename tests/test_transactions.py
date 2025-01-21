@@ -1,8 +1,8 @@
 from typing import Any
 from unittest.mock import patch
 
-from src.transactions import read_transactions_csv, read_transactions_excel, get_filter_transactions, \
-    count_transactions_by_categories
+from src.transactions import (count_transactions_by_categories, get_filter_transactions, read_transactions_csv,
+                              read_transactions_excel)
 
 
 @patch("csv.DictReader")
@@ -67,7 +67,7 @@ def test_read_transactions_excel(mock_excel: Any) -> None:
     mock_excel.assert_called_once()
 
 
-def test_get_filter_transactions():
+def test_get_filter_transactions() -> None:
     transactions = [
         {"description": "Открытие вклада", "amount": 5000, "status": "EXECUTED", "date": "2023-12-01"},
         {"description": "Перевод с карты на карту", "amount": 1000, "status": "CANCELED", "date": "2023-11-15"},
@@ -78,7 +78,8 @@ def test_get_filter_transactions():
     result = get_filter_transactions(transactions, keyword)
     assert len(result) == 0, f"Должно быть 1 совпадение, а найдено {len(result)}"
 
-def test_count_transactions_by_categories():
+
+def test_count_transactions_by_categories() -> None:
     transactions = [
         {"description": "Открытие вклада", "amount": 5000, "status": "EXECUTED", "date": "2023-12-01"},
     ]

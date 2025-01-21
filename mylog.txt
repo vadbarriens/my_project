@@ -6,3 +6,7 @@ my_func ok
 func2 error: ZeroDivisionError. Inputs: (2, 0), {}
 func3 error: TypeError. Inputs: (2, [2, 3]), {}
 func4 error: ValueError. Inputs: ('word',), {}
+my_func ok
+func2 error: ZeroDivisionError. Inputs: (2, 0), {}
+func3 error: TypeError. Inputs: (2, [2, 3]), {}
+func4 error: ValueError. Inputs: ('word',), {}

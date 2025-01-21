@@ -13,7 +13,7 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
 
 
-def fin_transaction(path: str) -> list:
+def fin_transaction_json(path: str) -> list:
     """Возвращает список словарей о финансовых транзакциях"""
     logger.info("запуск программы")
     try:

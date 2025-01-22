@@ -1,15 +1,15 @@
 from typing import Any
 from unittest.mock import patch
 
-from src.utils import fin_transaction, transaction_amount
+from src.utils import fin_transaction_json, transaction_amount
 
 
 def test_fin_transaction_nofile() -> None:
-    assert fin_transaction("nofile") == []
+    assert fin_transaction_json("nofile") == []
 
 
 def test_fin_transaction(path: Any) -> None:
-    assert fin_transaction(path)[0] == {
+    assert fin_transaction_json(path)[0] == {
         "id": 441945886,
         "state": "EXECUTED",
         "date": "2019-08-26T10:50:58.294041",
@@ -21,11 +21,11 @@ def test_fin_transaction(path: Any) -> None:
 
 
 def test_fin_transaction_empty_list(path_empty_list: Any) -> None:
-    assert fin_transaction(path_empty_list) == []
+    assert fin_transaction_json(path_empty_list) == []
 
 
 def test_fin_transaction_mistake_json(path_mistake_json: Any) -> None:
-    assert fin_transaction(path_mistake_json) == []
+    assert fin_transaction_json(path_mistake_json) == []
 
 
 def test_transaction_amount(transaction: Any) -> Any:
